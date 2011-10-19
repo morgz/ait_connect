@@ -5,7 +5,7 @@ module ActiveInTime
     end
 
     def find(id)
-      ActiveInTime::Venue.new(@active_in_time, @active_in_time.get("sites/#{id}")["site"])
+      ActiveInTime::Site.new(@active_in_time, @active_in_time.get("sites/#{id}")["site"])
     end
 
     def nearby(options={})
