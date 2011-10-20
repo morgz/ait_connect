@@ -21,6 +21,7 @@ module ActiveInTime
   class Error < StandardError ; end
   class InvalidAuth < ActiveInTime::Error; end
   class ServiceUnavailable < ActiveInTime::Error; end
+  class EndPointMissing < ActiveInTime::Error; end
 
   def self.verbose=(setting)
     @verbose = setting

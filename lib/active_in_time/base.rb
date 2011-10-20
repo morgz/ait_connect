@@ -106,21 +106,24 @@ module ActiveInTime
     end
 
     def error(response)
-      case response["meta"]["errorType"]
+      case response["meta"]["error"]
       when nil
         # It's all good.
       when "deprecated"
-        ActiveInTime.log(ActiveInTime::ERRORS[response['meta']['errorType']])
+        ActiveInTime.log(ActiveInTime::ERRORS[response['meta']['error']])
         nil
       else
-        error_type = response['meta']['errorType']
-        case error_type
-        when "invalid_auth"
-          raise ActiveInTime::InvalidAuth.new(ActiveInTime::ERRORS[error_type])
-        when "server_error"
-          raise ActiveInTime::ServiceUnavailable.new(ActiveInTime::ERRORS[error_type])
+        code = response['meta']['status']
+        error = response['meta']['error']['error_message']
+        case code
+        when 403
+          raise ActiveInTime::InvalidAuth.new(error)
+        when 501
+          raise ActiveInTime::ServiceUnavailable.new(error)
+        when 404
+          raise ActiveInTime::EndPointMissing.new(error)
         else
-          raise ActiveInTime::Error.new(ActiveInTime::ERRORS[error_type])
+          raise ActiveInTime::Error.new(error)
         end
       end
     end
