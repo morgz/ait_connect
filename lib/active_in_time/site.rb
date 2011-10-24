@@ -18,54 +18,19 @@ module ActiveInTime
     def name
       @json["name"]
     end
-
-    # def contact
-    #      @json["contact"]
-    #    end
-
-    # def location
-    #       Foursquare::Location.new(@json["location"])
-    #     end
-
-    def approved?
-      @json["approved"]
+    
+    def timetables
+      return [] if @json["timetables"].empty?
+      
+      timetables = []
+      @json['timetables'].each do |timetable|
+        timetables << ActiveInTime::Timetable.new(@active_in_time, timetable)
+      end
+      timetables
+      
     end
-
-    # def checkins_count
-    #       @json["stats"]["checkinsCount"]
-    #     end
-    # 
-    #     def users_count
-    #       @json["stats"]["usersCount"]
-    #     end
-    # 
-    #     def todos_count
-    #       @json["todos"]["count"]
-    #     end
-    #     
-    #     def stats
-    #       @json["stats"]
-    #     end
-    #     
-    #     def primary_category
-    #       return nil if categories.blank?
-    #       @primary_category ||= categories.select { |category| category.primary? }.try(:first)
-    #     end
-    #     
-    #     # return the url to the icon of the primary category
-    #     # if no primary is available, then return a default icon
-    #     def icon
-    #       primary_category ? primary_category["icon"] : "https://foursquare.com/img/categories/none.png"
-    #     end
-    #     
-    #     def short_url
-    #       @json["shortUrl"]
-    #     end
-    #     
-    #     def photos_count
-    #       @json["photos"]["count"]
-    #     end
-    #     
+    
+    
     #     # not all photos may be present here (but we try to avoid one extra API call)
     #     # if you want to get all the photos, try all_photos
     #     def photos

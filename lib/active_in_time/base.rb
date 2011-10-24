@@ -24,7 +24,15 @@ module ActiveInTime
     def sites
       ActiveInTime::SiteProxy.new(self)
     end
+    
+    def timetables
+      ActiveInTime::TimetableProxy.new(self)
+    end
 
+    def timetable_entries
+      ActiveInTime::TimetableEntryProxy.new(self)
+    end
+    
     # def settings
     #   @settings ||= ActiveInTime::Settings.new(self)
     # end

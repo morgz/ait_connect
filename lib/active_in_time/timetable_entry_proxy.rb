@@ -1,11 +1,17 @@
 module ActiveInTime
-  class TimetableProxy
+  class TimetableEntryProxy
     def initialize(active_in_time)
       @active_in_time = active_in_time
     end
 
-    def find(id)
-      ActiveInTime::Timetable.new(@active_in_time, @active_in_time.get("timetables/#{id}")["timetable"])
+    def find(id, options = {})
+      
+      entries = []
+      @active_in_time.get("timetables/#{id}/timetable_entries/index", options).each {  |te|
+          entries << ActiveInTime::TimetableEntry.new(@active_in_time,te['timetable_entry'])
+      }
+      entries
+      
     end
     
     private

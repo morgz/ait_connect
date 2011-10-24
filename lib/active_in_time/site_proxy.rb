@@ -17,13 +17,6 @@ module ActiveInTime
       end
       
       sites
-      # response = @active_in_time.get('sites', options)["groups"].inject({}) do |venues, group|
-      #         venues[group["type"]] ||= []
-      #         venues[group["type"]] += group["items"].map do |json|
-      #           Foursquare::Venue.new(@foursquare, json)
-      #         end
-      #         venues
-      #       end
     end
 
     # def trending(options={})

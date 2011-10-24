@@ -1,14 +1,9 @@
 module ActiveInTime
-  class Timetable
+  class TimetableSession
     attr_reader :json
 
     def initialize(active_in_time, json)
       @active_in_time, @json = active_in_time, json
-    end
-    
-    def fetch
-      @json = @active_in_time.get("timetables/#{id}")["timetable"]
-      self
     end
 
     def id
@@ -19,8 +14,9 @@ module ActiveInTime
       @json["name"]
     end
     
-    def times(options = {})
-      @active_in_time.timetable_entries.find(self.id,options)
+    def timetable_session_category
+      return nil if !@json['timetable_session_category']
+      ActiveInTime::TimetableSessionCategory.new(@active_in_time,@json['timetable_session_category'])
     end
     
   end
