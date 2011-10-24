@@ -1,0 +1,55 @@
+module ActiveInTime
+  class TimetableProxy
+    def initialize(active_in_time)
+      @active_in_time = active_in_time
+    end
+
+    def find(id)
+      ActiveInTime::Timetable.new(@active_in_time, @active_in_time.get("timetables/#{id}")["timetable"])
+    end
+    
+    def all(id)
+      ActiveInTime::Timetable.new(@active_in_time, @active_in_time.get("timetables/#{id}")["timetable"])
+    end
+
+    def nearby(options={})
+      raise ArgumentError, "You must include :ll" unless options[:ll]
+      
+      sites = []
+      response = @active_in_time.get('sites', options).each do |site_json|
+        sites << ActiveInTime::Site.new(@active_in_time, site_json['site'])
+      end
+      
+      sites
+      # response = @active_in_time.get('sites', options)["groups"].inject({}) do |venues, group|
+      #         venues[group["type"]] ||= []
+      #         venues[group["type"]] += group["items"].map do |json|
+      #           Foursquare::Venue.new(@foursquare, json)
+      #         end
+      #         venues
+      #       end
+    end
+
+    # def trending(options={})
+    #   search_group("trending", options)
+    # end
+    # 
+    # def favorites(options={})
+    #   search_group("favorites", options)
+    # end
+    
+    #def nearby(options={})
+    #   search_group("nearby", options)
+    #end
+
+    private
+
+    # def search_group(name, options)
+    #       raise ArgumentError, "You must include :ll" unless options[:ll]
+    #       response = @foursquare.get('venues/search', options)["groups"].detect { |group| group["type"] == name }
+    #       response ? response["items"].map do |json|
+    #         Foursquare::Venue.new(@foursquare, json)
+    #       end : []
+    #     end
+  end
+end
