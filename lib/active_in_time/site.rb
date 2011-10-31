@@ -31,6 +31,10 @@ module ActiveInTime
       self.contact['city']
     end
     
+    def country
+      self.contact['country']
+    end
+    
     def borough
       self.contact['borough']
     end
