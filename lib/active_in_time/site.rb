@@ -42,6 +42,10 @@ module ActiveInTime
     def address_line_2
       self.contact['address_line_2']
     end
+    
+    def postcode
+      self.contact['postcode']
+    end
 
     def latitude
       self.contact['latitude']
