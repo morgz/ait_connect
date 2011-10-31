@@ -9,11 +9,11 @@ module ActiveInTime
       @active_in_time, @json = active_in_time, json
     end
     
-    def fetch
-      @json = @active_in_time.get("timetables/#{timetable_id}/timetable_entries/#{id}")["timetable_entry"]
-      self
-    end
-
+    # def fetch
+    #       @json = @active_in_time.get("timetables/#{timetable_id}/timetable_entries/#{id}")["timetable_entry"]
+    #       self
+    #     end
+    
     def id
       @json["id"]
     end

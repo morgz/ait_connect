@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{https://github.com/morgz/ait_connect}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{A Active In Time Ruby API wrapper}
+  s.summary = %q{Active In Time Ruby API wrapper}
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION

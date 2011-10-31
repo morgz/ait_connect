@@ -18,7 +18,35 @@ module ActiveInTime
     def name
       @json["name"]
     end
+
+    #####
+    ##
+    ## Contact info
     
+    def contact
+      @json["contact"]
+    end
+    
+    def city
+      self.contact['city']
+    end
+    
+    def address_line_1
+      self.contact['address_line_1']
+    end
+    
+    def address_line_2
+      self.contact['address_line_2']
+    end
+
+    def latitude
+      self.contact['latitude']
+    end
+    
+    def longitude
+      self.contact['longitude']
+    end
+        
     def timetables
       return [] if @json["timetables"].empty?
       
