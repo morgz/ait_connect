@@ -31,6 +31,10 @@ module ActiveInTime
       self.contact['city']
     end
     
+    def borough
+      self.contact['borough']
+    end
+    
     def address_line_1
       self.contact['address_line_1']
     end
@@ -45,6 +49,18 @@ module ActiveInTime
     
     def longitude
       self.contact['longitude']
+    end
+    
+    def telephone
+      self.contact['telephone']
+    end
+    
+    def email
+      self.contact['email']
+    end
+    
+    def website
+      self.contact['website']
     end
         
     def timetables
