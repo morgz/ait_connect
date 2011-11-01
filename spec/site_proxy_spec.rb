@@ -20,6 +20,20 @@ describe ActiveInTime::SiteProxy do
     response.id.should == 1 
   end
   
+  
+  it "fetching updating information on a single site should bring back a single site with matching id" do
+    response = valid_api_client.sites.find(1)
+    site_id = response.id
+
+    #Use our conveinence method to fetch updated details
+    response = response.fetch
+    response.is_a?(ActiveInTime::Site).should == true
+    response.id.should == site_id
+    
+    
+  end
+  
+  
   it "searching with pagination (1 per page) should bring back 1 result only" do
     response = valid_api_client.sites.nearby(:ll => "51.5,-0.09", :radius => 20, :per_page => 1)
     response.is_a?([].class).should == true
