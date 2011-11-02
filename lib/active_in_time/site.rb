@@ -82,6 +82,17 @@ module ActiveInTime
       
     end
     
+    def facilities
+      return [] if @json["facilities"].empty?
+      
+      facilities = []
+      json['facilities'].each do |facility|
+        facilities << ActiveInTime::Facility.new(@active_in_time, facility)
+      end
+      facilities
+      
+    end
+    
     
     #     # not all photos may be present here (but we try to avoid one extra API call)
     #     # if you want to get all the photos, try all_photos

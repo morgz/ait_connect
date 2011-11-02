@@ -52,8 +52,28 @@ describe ActiveInTime::SiteProxy do
     
   end
   
+  it "should return facilities if they exist" do
+    response = valid_api_client.sites.find(1)
+    response.facilities.is_a?([].class).should == true
+    response.facilities.first.is_a?(ActiveInTime::Facility).should == true
+  end
   
   
+  it "if a facility exists it should bring back a facility type" do
+    response = valid_api_client.sites.find(1)
+    
+    facility = response.facilities.first    
+    facility.facility_type.is_a?(ActiveInTime::FacilityType).should == true
+    
+  end
+  
+  it "if a facility exists it should bring back a facility type category" do
+    response = valid_api_client.sites.find(1)
+    
+    facility = response.facilities.first
+    facility_type_category = facility.facility_type.facility_type_category
+    facility_type_category.is_a?(ActiveInTime::FacilityTypeCategory).should == true
+  end  
   
   
 end

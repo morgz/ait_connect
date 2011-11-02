@@ -22,6 +22,10 @@ require "active_in_time/instructor"
 require "active_in_time/level"
 require "active_in_time/timetable_session_category"
 
+require "active_in_time/facility"
+require "active_in_time/facility_type"
+require "active_in_time/facility_type_category"
+
 # require "active_in_time/settings"
 # require "active_in_time/tip"
 # require "active_in_time/photo"
