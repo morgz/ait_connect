@@ -7,7 +7,7 @@ module ActiveInTime
     end
     
     def fetch
-      @json = @active_in_time.get("sites/#{id}")["site"]
+      @json = @active_in_time.get("sites/#{id}")
       self
     end
 

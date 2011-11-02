@@ -5,15 +5,15 @@ module ActiveInTime
     end
 
     def find(id)
-      ActiveInTime::Site.new(@active_in_time, @active_in_time.get("sites/#{id}")["site"])
+      ActiveInTime::Site.new(@active_in_time, @active_in_time.get("sites/#{id}"))
     end
 
     def nearby(options={})
       raise ArgumentError, "You must include :ll" unless options[:ll]
       
       sites = []
-      response = @active_in_time.get('sites', options)['sites'].each do |site_json|
-        sites << ActiveInTime::Site.new(@active_in_time, site_json['site'])
+      response = @active_in_time.get('sites', options).each do |site_json|
+        sites << ActiveInTime::Site.new(@active_in_time, site_json)
       end
       
       sites

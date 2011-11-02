@@ -20,7 +20,7 @@ module ActiveInTime
     end
     
     def facility_type_category
-      ActiveInTime::FacilityTypeCategory.new(@active_in_time, @json['facility_type_category'])
+      ActiveInTime::FacilityTypeCategory.new(@active_in_time, @json)
     end
     
   end

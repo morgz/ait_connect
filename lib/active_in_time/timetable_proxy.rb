@@ -5,7 +5,7 @@ module ActiveInTime
     end
 
     def find(id)
-      ActiveInTime::Timetable.new(@active_in_time, @active_in_time.get("timetables/#{id}")["timetable"])
+      ActiveInTime::Timetable.new(@active_in_time, @active_in_time.get("timetables/#{id}"))
     end
     
     private
