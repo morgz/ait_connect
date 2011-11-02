@@ -23,6 +23,9 @@ module ActiveInTime
       @json['tldc_approved']
     end
     
+    def length
+      @json['length']
+    end
     
     def facility_type
       ActiveInTime::FacilityType.new(@active_in_time, @json['facility_type'])
