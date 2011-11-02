@@ -19,6 +19,10 @@ module ActiveInTime
       @json["name"]
     end
     
+    def tldc_approved
+      @json['tldc_approved']
+    end
+    
     
     def facility_type
       ActiveInTime::FacilityType.new(@active_in_time, @json['facility_type'])

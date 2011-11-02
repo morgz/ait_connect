@@ -14,6 +14,10 @@ module ActiveInTime
     def id
       @json["id"]
     end
+    
+    def tldc_approved
+      @json['tldc_approved']
+    end
 
     def name
       @json["name"]
