@@ -31,8 +31,8 @@ module ActiveInTime
       @json["contact"]
     end
     
-    def city
-      self.contact['city']
+    def post_town
+      self.contact['post_town']
     end
     
     def country
@@ -51,8 +51,8 @@ module ActiveInTime
       self.contact['address_line_2']
     end
     
-    def postcode
-      self.contact['postcode']
+    def post_code
+      self.contact['post_code']
     end
 
     def latitude
