@@ -1,7 +1,7 @@
 module ActiveInTime
   class Base
-    API = "http://api.activeintime.com/v1/"
-    #API = "http://api.lvh.me:3000/v1/"
+    #API = "http://api.activeintime.com/v1/"
+    API = "http://api.lvh.me:3000/v1/"
 
     def initialize(*args)
       case args.size
